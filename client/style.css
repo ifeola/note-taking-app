@@ -1,0 +1,50 @@
+@font-face {
+	font-family: InterVariable;
+	font-style: normal;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/InterVariable.woff2") format("woff2");
+}
+@font-face {
+	font-family: InterVariableItalic;
+	font-style: italic;
+	font-weight: 100 900;
+	font-display: swap;
+	src: url("/fonts/InterVariable-Italic.woff2") format("woff2");
+}
+
+:root {
+	--bg-color: #fafafa;
+	--overlay-color: #ffffff;
+	--black-color: #222222;
+	--text-color: #333;
+	--white-color: #fff;
+	--border-color: #ddd;
+	--blue-color: #4f46e5;
+}
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+body {
+	font-family: InterVariable, system-ui, -apple-system, BlinkMacSystemFont,
+		"Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue",
+		sans-serif;
+	background-color: var(--bg-color);
+	color: var(--text-color);
+	line-height: 1.6;
+	padding: 1.25rem;
+}
+
+.container {
+	max-width: 1024px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
