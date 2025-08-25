@@ -1,5 +1,6 @@
 import getData from "./modules/getData.js";
 import appendNoteToDOM from "./modules/appendNoteToDOM.js";
+// import appendIsLoadingState from "./modules/appendIsLoadingState.js";
 
 const noteTabs = document.querySelector(".note-tabs");
 const notesListContainer = document.querySelector(".notes");
@@ -7,11 +8,18 @@ const notesTabContainer = document.querySelector(".note-tabs");
 const totalNotes = document.querySelector(".total-notes");
 const subNotes = document.querySelector(".sub-notes");
 let notes = [];
+let isLoading = true;
 
 async function initializeApp() {
-	notes = await getData(); // Wait for the data here
+	notes = await getData({ undefined, isLoading }); // Wait for the data here
 	totalNotes.textContent = notes.length;
 	appendNoteToDOM(notes, notesListContainer);
+	console.log(isLoading);
+
+	// isLoading === true
+	// 	? appendIsLoadingState(notesListContainer)
+	// 	: appendNoteToDOM(notes, notesListContainer);
+	// if (isLoading) appendIsLoadingState(notesListContainer);
 	getTags(notes);
 	countNotes(notes);
 }
@@ -57,7 +65,10 @@ notesTabContainer.addEventListener("click", async (e) => {
 		}
 	});
 
-	const filteredNotes = await getData(query);
+	const filteredNotes = await getData({ query, isLoading });
 	appendNoteToDOM(filteredNotes, notesListContainer);
+	// isLoading === true
+	// 	? appendIsLoadingState(notesListContainer)
+	// 	: appendNoteToDOM(filteredNotes, notesListContainer);
 	countNotes(filteredNotes);
 });

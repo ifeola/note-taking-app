@@ -28,6 +28,7 @@
 	--active-bg-color: rgb(219, 219, 219);
 
 	--svg-hover-color: #494949;
+	--loading-color: #9b9b9b;
 	--transparent-bg-color: rgba(219, 219, 219, 0.603);
 
 	--font-fam: "Inter";
@@ -238,17 +239,14 @@ nav .logo {
 	box-shadow: 0 0 3px rgba(0, 0, 0, 0.12);
 }
 
+.profile-image img {
+	width: 100%;
+	height: 100%;
+}
+
 .nav-menu {
 	background-color: var(--bg-color);
 }
-
-/* .profile-image {
-	display: block;
-	background: url("../client/images/profile.png");
-	background-position: center;
-	background-size: contain;
-	background-repeat: no-repeat;
-} */
 
 .header-bottom {
 	margin-top: 1.25rem;
@@ -491,5 +489,111 @@ main {
 		align-items: center;
 		gap: 0.25rem;
 		font-size: 0.875rem;
+	}
+}
+
+/* Loading State */
+.loading-note-state {
+	display: flex;
+	flex-direction: column;
+	padding: 1rem;
+	border: 1px solid var(--border-color);
+	border-radius: var(--border-radius);
+	background-color: var(--bg-color);
+	box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
+	-webkit-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.1);
+	animation: pulse 2s infinite;
+
+	.loading-top {
+		display: flex;
+		flex-direction: column;
+		padding-block-end: 1.5rem;
+		border-block-end: 1px solid var(--border-color);
+	}
+
+	.loading-tag {
+		width: 4rem;
+		height: 1.5rem;
+		margin-bottom: 1.5rem;
+		background-color: var(--loading-color);
+	}
+
+	.loading-top-bottom {
+		width: 100%;
+		display: flex;
+		align-items: flex-end;
+	}
+
+	.loading-title {
+		width: 100%;
+		gap: 0.5rem;
+	}
+
+	.loading-title div {
+		height: 1rem;
+		background-color: var(--loading-color);
+	}
+
+	.loading-title-1 {
+		width: 40%;
+	}
+
+	.loading-title-2 {
+		width: 60%;
+		margin-top: 0.5rem;
+	}
+
+	.loading-edit-btn {
+		height: 2rem;
+		width: 2rem;
+		background-color: var(--loading-color);
+	}
+
+	.loading-bottom {
+		padding-top: 1.5rem;
+	}
+
+	.loading-paragraph {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.loading-paragraph div {
+		height: 0.875rem;
+		width: 92%;
+		background-color: var(--loading-color);
+	}
+
+	div.loading-paragraph-4 {
+		width: 80%;
+	}
+
+	.loading-bottom-bottom {
+		margin-top: 2rem;
+		display: flex;
+		justify-content: space-between;
+	}
+
+	.loading-date,
+	.loading-delete-btn {
+		width: 4rem;
+		height: 1.5rem;
+		background-color: var(--loading-color);
+	}
+}
+
+@keyframes pulse {
+	0% {
+		opacity: 1;
+	}
+
+	50% {
+		opacity: 0.48;
+	}
+
+	100% {
+		opacity: 1;
 	}
 }
