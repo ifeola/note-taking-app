@@ -1,0 +1,302 @@
+[
+	{
+		"id": "2d5c-4a1b-9e8c-3f2a1b0c9e8d",
+		"title": "Meeting Notes - Project Phoenix",
+		"content": "Attendees: John Doe, Jane Smith, Peter Jones. Discussed project timeline and budget. Key decisions made on resource allocation. Next meeting scheduled for next Monday.",
+		"tag": "work",
+		"date": "2025-08-25T10:00:00Z",
+		"last_modified": "2025-08-25T10:05:00Z",
+		"author": "John Doe",
+		"is_archived": false
+	},
+	{
+		"id": "8a7b-3d2c-1e0f-9c8d-7b6a5d4c3b2a",
+		"title": "Grocery List",
+		"content": "Milk, bread, eggs, cheese, apples, bananas, chicken breast, pasta, tomato sauce.",
+		"tag": "personal",
+		"date": "2025-08-25T09:30:00Z",
+		"last_modified": "2025-08-25T09:32:00Z",
+		"author": "Jane Smith",
+		"is_archived": false
+	},
+	{
+		"id": "1b2c-9d8e-7f6a-5b4c-3d2e1f0a9c8b",
+		"title": "Book Club - 'The Midnight Library'",
+		"content": "Discussion points: Nora's choices, the concept of the root life, favorite alternate lives. What did everyone think of the ending?",
+		"tag": "hobby",
+		"date": "2025-08-24T18:00:00Z",
+		"last_modified": "2025-08-24T18:15:00Z",
+		"author": "Emily White",
+		"is_archived": false
+	},
+	{
+		"id": "6a5b-4c3d-2e1f-0a9c-8b7a6d5c4b3a",
+		"title": "Vacation Planning - Italy",
+		"content": "Cities to visit: Rome, Florence, Venice. Book flights and accommodation. Research train schedules. Must-see attractions: Colosseum, Uffizi Gallery, St. Mark's Basilica.",
+		"tag": "travel",
+		"date": "2025-08-23T14:00:00Z",
+		"last_modified": "2025-08-23T14:30:00Z",
+		"author": "John Doe",
+		"is_archived": false
+	},
+	{
+		"id": "f0e9-d8c7-b6a5-4b3c-2d1e0f9a8b7c",
+		"title": "Brainstorming Session - New App Idea",
+		"content": "Name ideas: NoteSphere, IdeaStream, MindGarden. Core features: nested notes, rich text formatting, collaboration. Monetization strategy: freemium model.",
+		"tag": "work",
+		"date": "2025-08-22T11:00:00Z",
+		"last_modified": "2025-08-22T11:45:00Z",
+		"author": "Peter Jones",
+		"is_archived": false
+	},
+	{
+		"id": "5c4b-3a2d-1e0f-9a8b-7c6d5e4f3a2b",
+		"title": "Recipe - Chocolate Chip Cookies",
+		"content": "Ingredients: flour, sugar, butter, eggs, chocolate chips, vanilla extract, baking soda, salt. Instructions: Cream butter and sugar, beat in eggs and vanilla, mix in dry ingredients, stir in chocolate chips, bake at 375°F for 10-12 minutes.",
+		"tag": "personal",
+		"date": "2025-08-21T16:20:00Z",
+		"last_modified": "2025-08-21T16:25:00Z",
+		"author": "Jane Smith",
+		"is_archived": false
+	},
+	{
+		"id": "e9d8-c7b6-a5b4-3c2d-1e0f9a8b7c6d",
+		"title": "Workout Plan - Week 34",
+		"content": "Monday: Chest & Triceps. Tuesday: Back & Biceps. Wednesday: Legs. Thursday: Shoulders. Friday: Cardio. Focus on progressive overload.",
+		"tag": "health",
+		"date": "2025-08-20T08:00:00Z",
+		"last_modified": "2025-08-20T08:05:00Z",
+		"author": "John Doe",
+		"is_archived": false
+	},
+	{
+		"id": "4b3c-2d1e-0f9a-8b7c-6d5e4f3a2b1c",
+		"title": "Gift Ideas for Mom's Birthday",
+		"content": "Personalized photo album, a nice piece of jewelry, a weekend getaway, a subscription box for her favorite hobby.",
+		"tag": "personal",
+		"date": "2025-08-19T19:00:00Z",
+		"last_modified": "2025-08-19T19:10:00Z",
+		"author": "Jane Smith",
+		"is_archived": false
+	},
+	{
+		"id": "d8c7-b6a5-4b3c-2d1e-0f9a8b7c6d5e",
+		"title": "Q3 Marketing Strategy",
+		"content": "Focus on social media engagement, content marketing, and influencer collaborations. Launch new ad campaign in September. Track KPIs closely.",
+		"tag": "work",
+		"date": "2025-08-18T15:30:00Z",
+		"last_modified": "2025-08-18T16:00:00Z",
+		"author": "Peter Jones",
+		"is_archived": false
+	},
+	{
+		"id": "3c2d-1e0f-9a8b-7c6d-5e4f3a2b1c0d",
+		"title": "Language Learning - Spanish",
+		"content": "Practice verb conjugations (present tense). Learn 20 new vocabulary words. Watch a movie in Spanish with subtitles.",
+		"tag": "learning",
+		"date": "2025-08-17T20:00:00Z",
+		"last_modified": "2025-08-17T20:05:00Z",
+		"author": "Emily White",
+		"is_archived": false
+	},
+	{
+		"id": "c7b6-a5b4-3c2d-1e0f-9a8b7c6d5e4f",
+		"title": "Home Improvement To-Do List",
+		"content": "Fix leaky faucet in the kitchen, repaint the living room, organize the garage, plant new flowers in the garden.",
+		"tag": "home",
+		"date": "2025-08-16T13:00:00Z",
+		"last_modified": "2025-08-16T13:20:00Z",
+		"author": "John Doe",
+		"is_archived": true
+	},
+	{
+		"id": "2d1e-0f9a-8b7c-6d5e-4f3a2b1c0d9e",
+		"title": "Movie Night Suggestions",
+		"content": "The Grand Budapest Hotel, Parasite, Everything Everywhere All at Once, Knives Out.",
+		"tag": "hobby",
+		"date": "2025-08-15T21:00:00Z",
+		"last_modified": "2025-08-15T21:05:00Z",
+		"author": "Jane Smith",
+		"is_archived": false
+	},
+	{
+		"id": "b6a5-4b3c-2d1e-0f9a-8b7c6d5e4f3a",
+		"title": "Client Feedback - Acme Corp",
+		"content": "Positive feedback on the new user interface. They requested a new feature for data export. Schedule a follow-up call to discuss.",
+		"tag": "work",
+		"date": "2025-08-14T12:00:00Z",
+		"last_modified": "2025-08-14T12:15:00Z",
+		"author": "Peter Jones",
+		"is_archived": false
+	},
+	{
+		"id": "1e0f-9a8b-7c6d-5e4f-3a2b1c0d9e8f",
+		"title": "Podcast Ideas",
+		"content": "Episode 1: The History of the Internet. Episode 2: The Psychology of Procrastination. Episode 3: Interview with a successful entrepreneur.",
+		"tag": "creative",
+		"date": "2025-08-13T17:45:00Z",
+		"last_modified": "2025-08-13T17:50:00Z",
+		"author": "Emily White",
+		"is_archived": false
+	},
+	{
+		"id": "a5b4-3c2d-1e0f-9a8b-7c6d5e4f3a2b",
+		"title": "Financial Goals - 2025",
+		"content": "Save $10,000 for a down payment, invest in a diversified portfolio, pay off credit card debt.",
+		"tag": "finance",
+		"date": "2025-08-12T09:00:00Z",
+		"last_modified": "2025-08-12T09:10:00Z",
+		"author": "John Doe",
+		"is_archived": false
+	},
+	{
+		"id": "0f9a-8b7c-6d5e-4f3a-2b1c0d9e8f7a",
+		"title": "Weekly Reflection",
+		"content": "What went well this week? What could have been better? What am I grateful for? Set intentions for the upcoming week.",
+		"tag": "personal",
+		"date": "2025-08-11T22:00:00Z",
+		"last_modified": "2025-08-11T22:05:00Z",
+		"author": "Jane Smith",
+		"is_archived": false
+	},
+	{
+		"id": "9a8b-7c6d-5e4f-3a2b-1c0d9e8f7a6b",
+		"title": "Code Snippet - Python Data Scraping",
+		"content": "```python\nimport requests\nfrom bs4 import BeautifulSoup\n\nURL = 'https://example.com'\npage = requests.get(URL)\nsoup = BeautifulSoup(page.content, 'html.parser')\n```",
+		"tag": "work",
+		"date": "2025-08-10T16:00:00Z",
+		"last_modified": "2025-08-10T16:05:00Z",
+		"author": "Peter Jones",
+		"is_archived": false
+	},
+	{
+		"id": "8b7c-6d5e-4f3a-2b1c-0d9e8f7a6b5c",
+		"title": "Gardening Log",
+		"content": "Planted tomatoes and basil. Watered the roses. Weeded the vegetable patch.",
+		"tag": "hobby",
+		"date": "2025-08-09T18:30:00Z",
+		"last_modified": "2025-08-09T18:35:00Z",
+		"author": "Emily White",
+		"is_archived": false
+	},
+	{
+		"id": "7c6d-5e4f-3a2b-1c0d-9e8f7a6b5c4d",
+		"title": "Car Maintenance",
+		"content": "Oil change due in 500 miles. Check tire pressure. Schedule a service appointment.",
+		"tag": "personal",
+		"date": "2025-08-08T11:00:00Z",
+		"last_modified": "2025-08-08T11:05:00Z",
+		"author": "John Doe",
+		"is_archived": false
+	},
+	{
+		"id": "6d5e-4f3a-2b1c-0d9e-8f7a6b5c4d3e",
+		"title": "Presentation Outline - Q4 Goals",
+		"content": "I. Review of Q3 Performance. II. Q4 Objectives and Key Results. III. Strategic Initiatives. IV. Budget Allocation. V. Q&A.",
+		"tag": "work",
+		"date": "2025-08-07T14:00:00Z",
+		"last_modified": "2025-08-07T14:30:00Z",
+		"author": "Jane Smith",
+		"is_archived": false
+	},
+	{
+		"id": "5e4f-3a2b-1c0d-9e8f-7a6b5c4d3e2f",
+		"title": "Journal Entry",
+		"content": "Feeling inspired today after reading a great book. Had a productive day at work and a relaxing evening. Grateful for the small moments of joy.",
+		"tag": "personal",
+		"date": "2025-08-06T23:00:00Z",
+		"last_modified": "2025-08-06T23:05:00Z",
+		"author": "Emily White",
+		"is_archived": false
+	},
+	{
+		"id": "4f3a-2b1c-0d9e-8f7a-6b5c4d3e2f1a",
+		"title": "Project Retrospective",
+		"content": "What went well: Team collaboration, meeting deadlines. What could be improved: Communication with stakeholders, more thorough testing. Action items for next project.",
+		"tag": "work",
+		"date": "2025-08-05T10:30:00Z",
+		"last_modified": "2025-08-05T11:00:00Z",
+		"author": "Peter Jones",
+		"is_archived": false
+	},
+	{
+		"id": "3a2b-1c0d-9e8f-7a6b-5c4d3e2f1a0b",
+		"title": "Concert Tickets - The Lumineers",
+		"content": "Date: October 25th, 2025. Venue: Madison Square Garden. Seats: Section 102, Row 15.",
+		"tag": "event",
+		"date": "2025-08-04T19:00:00Z",
+		"last_modified": "2025-08-04T19:05:00Z",
+		"author": "Jane Smith",
+		"is_archived": false
+	},
+	{
+		"id": "2b1c-0d9e-8f7a-6b5c-4d3e2f1a0b9c",
+		"title": "Online Course Notes - Introduction to Machine Learning",
+		"content": "Lecture 1: What is Machine Learning? Supervised vs. Unsupervised learning. Key concepts: features, labels, models.",
+		"tag": "learning",
+		"date": "2025-08-03T13:00:00Z",
+		"last_modified": "2025-08-03T13:45:00Z",
+		"author": "John Doe",
+		"is_archived": false
+	},
+	{
+		"id": "1c0d-9e8f-7a6b-5c4d-3e2f1a0b9c8d",
+		"title": "Dream Journal",
+		"content": "Dreamt I was flying over a city of lights. The feeling was exhilarating. Woke up feeling peaceful and inspired.",
+		"tag": "personal",
+		"date": "2025-08-02T07:00:00Z",
+		"last_modified": "2025-08-02T07:05:00Z",
+		"author": "Emily White",
+		"is_archived": false
+	},
+	{
+		"id": "0d9e-8f7a-6b5c-4d3e-2f1a0b9c8d7e",
+		"title": "Server Migration Plan",
+		"content": "Phase 1: Backup all data. Phase 2: Set up new server environment. Phase 3: Migrate data and applications. Phase 4: Test and verify. Go-live date: September 15th.",
+		"tag": "work",
+		"date": "2025-08-01T15:00:00Z",
+		"last_modified": "2025-08-01T15:30:00Z",
+		"author": "Peter Jones",
+		"is_archived": true
+	},
+	{
+		"id": "9e8f-7a6b-5c4d-3e2f-1a0b9c8d7e6f",
+		"title": "Hiking Trail Ideas",
+		"content": "Bear Mountain Loop, Breakneck Ridge, Appalachian Trail section. Check weather conditions before going. Pack plenty of water and snacks.",
+		"tag": "hobby",
+		"date": "2025-07-31T18:00:00Z",
+		"last_modified": "2025-07-31T18:10:00Z",
+		"author": "Jane Smith",
+		"is_archived": false
+	},
+	{
+		"id": "8f7a-6b5c-4d3e-2f1a-0b9c8d7e6f5a",
+		"title": "New Restaurant to Try",
+		"content": "Name: The Gilded Spoon. Cuisine: Modern American. Reviews are excellent. Make a reservation for Saturday night.",
+		"tag": "personal",
+		"date": "2025-07-30T20:30:00Z",
+		"last_modified": "2025-07-30T20:35:00Z",
+		"author": "John Doe",
+		"is_archived": false
+	},
+	{
+		"id": "7a6b-5c4d-3e2f-1a0b-9c8d7e6f5a4b",
+		"title": "User Interview Synthesis",
+		"content": "Key takeaways: Users want a simpler onboarding process. The search functionality is not intuitive. Positive feedback on the new design.",
+		"tag": "work",
+		"date": "2025-07-29T11:30:00Z",
+		"last_modified": "2025-07-29T12:00:00Z",
+		"author": "Jane Smith",
+		"is_archived": false
+	},
+	{
+		"id": "6b5c-4d3e-2f1a-0b9c-8d7e6f5a4b3c",
+		"title": "Inspirational Quotes",
+		"content": "\"The only way to do great work is to love what you do.\" - Steve Jobs. \"Believe you can and you're halfway there.\" - Theodore Roosevelt. \"The future belongs to those who believe in the beauty of their dreams.\" - Eleanor Roosevelt.",
+		"tag": "inspiration",
+		"date": "2025-07-28T09:00:00Z",
+		"last_modified": "2025-07-28T09:05:00Z",
+		"author": "Emily White",
+		"is_archived": false
+	}
+]
