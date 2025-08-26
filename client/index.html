@@ -4,7 +4,7 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<link rel="shortcut icon" href="./images/logo.svg" type="image/x-icon" />
-		<title>Document</title>
+		<title>Inscribe</title>
 		<link rel="stylesheet" href="style.css" />
 		<script type="module" src="script.js" defer></script>
 	</head>
@@ -38,12 +38,12 @@
 								height="24"
 								viewBox="0 0 24 24">
 								<path
-									fill="none"
-									stroke="currentColor"
-									stroke-linecap="round"
-									stroke-linejoin="round"
-									stroke-width="1.5"
-									d="m19 9l-7 6l-1.75-1.5M5 9l2.333 2" />
+									fill="currentColor"
+									d="m8.303 12.404l3.327 3.431c.213.22.527.22.74 0l6.43-6.63C19.201 8.79 18.958 8 18.43 8h-5.723z" />
+								<path
+									fill="currentColor"
+									d="M11.293 8H5.57c-.528 0-.771.79-.37 1.205l2.406 2.481z"
+									opacity="0.5" />
 							</svg>
 							<span class="profile-image flex items-center justify-center">
 								<img src="/images/profile.png" alt="profile image" />
@@ -142,6 +142,36 @@
 			</header>
 			<main>
 				<ul class="notes"></ul>
+				<div class="form-container flex items-center justify-center">
+					<form id="add-note-form" class="flex">
+						<h4 class="form-title">Inscribe an idea</h4>
+						<div class="input-group">
+							<label for="input-title">Title</label>
+							<input
+								type="text"
+								name="inputTitle"
+								id="input-title"
+								placeholder="Enter title" />
+						</div>
+						<div class="input-group">
+							<label for="input-content">Enter Note</label>
+							<textarea
+								name="inputConten"
+								id="input-content"
+								placeholder="Enter content"></textarea>
+						</div>
+						<div class="form-tags-bg">
+							<label for="form-tags">Select a Tag:</label>
+							<select name="formTags" id="form-tags">
+								<option value="personal">Personal</option>
+								<option value="work">Work</option>
+								<option value="travel">Travel</option>
+								<option value="hobby">Hobby</option>
+							</select>
+						</div>
+						<button type="submit" class="form-btn">Add Note</button>
+					</form>
+				</div>
 			</main>
 		</div>
 	</body>

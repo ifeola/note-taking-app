@@ -154,7 +154,8 @@ h4 {
 }
 
 button,
-input {
+input,
+textarea {
 	font: inherit;
 	border: none;
 	outline: none;
@@ -595,5 +596,97 @@ main {
 
 	100% {
 		opacity: 1;
+	}
+}
+
+/* Form Styles */
+.form-container {
+	/* display: none; */
+	position: fixed;
+	inset: 0;
+
+	padding: 1rem;
+	backdrop-filter: blur(20px);
+	background: rgba(219, 219, 219, 0.12);
+}
+
+#add-note-form {
+	display: flex;
+	flex-direction: column;
+	gap: 0.765rem;
+
+	padding: 1rem;
+	width: min(100%, 400px);
+
+	border-radius: var(--border-radius);
+	background: var(--bg-color);
+	box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
+	-webkit-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
+	-moz-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.1);
+
+	.form-title {
+		font-size: 1.25rem;
+		margin-block: 0.5rem 1rem;
+		text-align: center;
+	}
+
+	.input-group,
+	.form-tags-bg {
+		display: flex;
+		flex-direction: column;
+		gap: 0.125rem;
+	}
+
+	.input-group label,
+	.form-tags-bg label {
+		font-weight: 500;
+		font-size: 0.875rem;
+	}
+
+	.input-group input,
+	.input-group textarea {
+		padding: 0.25rem 0.5rem;
+		border-radius: var(--border-radius);
+		border: 1px solid var(--border-color);
+	}
+
+	.input-group input:focus,
+	.input-group textarea:focus {
+		border-color: var(--blue-color);
+	}
+
+	.input-group textarea {
+		height: 10rem;
+	}
+
+	#form-tags {
+		font: inherit;
+		outline: none;
+		appearance: none;
+		font-size: 1rem;
+		position: relative;
+		padding: 0.5rem 1rem;
+		border-radius: var(--border-radius);
+		border: 1px solid var(--border-color);
+	}
+
+	#form-tags::after {
+		content: url("/images/arrow-down.svg");
+		position: absolute;
+		left: 0;
+		top: 0;
+	}
+
+	#form-tags:focus {
+		border-color: var(--blue-color);
+	}
+
+	.form-btn {
+		font-size: 0.875rem;
+		font-weight: 500;
+		padding-block: 0.5rem;
+		color: var(--white-color);
+		border-radius: var(--border-radius);
+		background-color: var(--blue-color);
 	}
 }
