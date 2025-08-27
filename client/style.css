@@ -604,6 +604,8 @@ main {
 	/* display: none; */
 	position: fixed;
 	inset: 0;
+	height: 100vh;
+	height: 100dvh;
 
 	padding: 1rem;
 	backdrop-filter: blur(20px);
