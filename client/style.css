@@ -608,6 +608,25 @@ main {
 	padding: 1rem;
 	backdrop-filter: blur(20px);
 	background: rgba(219, 219, 219, 0.12);
+
+	opacity: 0;
+	scale: 0;
+	transition: 300ms cubic-bezier(0.8, -0.4, 0.5, 1);
+
+	#close-modal-btn {
+		position: absolute;
+		top: 1.25rem;
+		right: 1.25rem;
+		border: 2px solid var(--black-color);
+		width: 2rem;
+		height: 2rem;
+		border-radius: var(--border-radius);
+	}
+
+	&.active-modal {
+		opacity: 1;
+		scale: 1;
+	}
 }
 
 #add-note-form {
@@ -615,14 +634,24 @@ main {
 	flex-direction: column;
 	gap: 0.765rem;
 
-	padding: 1rem;
-	width: min(100%, 400px);
+	padding: 1.5rem 1rem;
+	width: min(100%, 540px);
 
 	border-radius: var(--border-radius);
 	background: var(--bg-color);
 	box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
 	-webkit-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
 	-moz-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.1);
+
+	@media (width > 765px) {
+		padding: 2.5rem 1rem;
+	}
+
+	& > * {
+		width: 100%;
+		max-width: 420px;
+		margin-inline: auto;
+	}
 
 	.form-title {
 		font-size: 1.25rem;

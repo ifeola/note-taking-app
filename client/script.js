@@ -7,6 +7,9 @@ const notesListContainer = document.querySelector(".notes");
 const notesTabContainer = document.querySelector(".note-tabs");
 const totalNotes = document.querySelector(".total-notes");
 const subNotes = document.querySelector(".sub-notes");
+const createNoteBtn = document.querySelector(".create-new-note-btn");
+const formContainer = document.querySelector(".form-container");
+const closeModalBtn = document.querySelector("#close-modal-btn");
 let notes = [];
 let isLoading = true;
 
@@ -14,7 +17,6 @@ async function initializeApp() {
 	notes = await getData({ undefined, isLoading }); // Wait for the data here
 	totalNotes.textContent = notes.length;
 	appendNoteToDOM(notes, notesListContainer);
-	console.log(isLoading);
 
 	// isLoading === true
 	// 	? appendIsLoadingState(notesListContainer)
@@ -71,4 +73,12 @@ notesTabContainer.addEventListener("click", async (e) => {
 	// 	? appendIsLoadingState(notesListContainer)
 	// 	: appendNoteToDOM(filteredNotes, notesListContainer);
 	countNotes(filteredNotes);
+});
+
+createNoteBtn.addEventListener("click", () => {
+	formContainer.classList.add("active-modal");
+});
+
+closeModalBtn.addEventListener("click", () => {
+	formContainer.classList.remove("active-modal");
 });
