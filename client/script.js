@@ -12,7 +12,6 @@ const createNoteBtn = document.querySelector(".create-new-note-btn");
 const formContainer = document.querySelector(".form-container");
 const closeModalBtn = document.querySelector("#close-modal-btn");
 let notes = [];
-let isLoading = true;
 
 async function initializeApp() {
 	// Show loader and hide content container
@@ -21,9 +20,7 @@ async function initializeApp() {
 	appendIsLoadingState(loader);
 
 	// Data fetching logic
-	notes = await getData({
-		undefined,
-	});
+	notes = await getData("/api/v1/notes");
 
 	// Hide loader, show content
 	loader.style.display = "none";
@@ -76,7 +73,7 @@ notesTabContainer.addEventListener("click", async (e) => {
 		}
 	});
 
-	const filteredNotes = await getData({ query });
+	const filteredNotes = await getData(`/api/v1/notes/${query}`);
 	appendNoteToDOM(filteredNotes, notesListContainer);
 	countNotes(filteredNotes);
 });

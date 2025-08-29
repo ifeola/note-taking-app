@@ -1,11 +1,9 @@
-export default async function getData({ query = undefined }) {
+export default async function getData(path) {
 	try {
-		const response = await fetch("/api/notes");
+		const response = await fetch(path);
 		if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
-		const data = await response.json();
-		if (data.length === 0) return "No notes found";
-		const notes =
-			query === undefined ? data : data.filter((datum) => datum.tag === query);
+		const notes = await response.json();
+		if (notes.length === 0) return "No notes found";
 		return notes;
 	} catch (error) {
 		console.error("Failed to load notes:", error.message);
