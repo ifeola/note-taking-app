@@ -390,7 +390,8 @@ main {
 	}
 }
 
-.notes {
+.notes,
+.loading {
 	display: grid;
 	gap: 0.5rem;
 	list-style: none;

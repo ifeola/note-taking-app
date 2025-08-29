@@ -1,9 +1,9 @@
-export default function appendIsLoadingState(notesListContainer) {
-	notesListContainer.innerHTML = "";
+export default function appendIsLoadingState(loadingListContainer) {
+	loadingListContainer.innerHTML = "";
 
 	[...Array(8)].forEach((_, id) => {
 		const loading = document.createElement("li");
-		loading.classList.add("oading-note-state");
+		loading.classList.add("loading-note-state");
 		const loadingInner = `
       <div class="loading-top">
 				<div class="loading-tag"></div>
@@ -29,6 +29,6 @@ export default function appendIsLoadingState(notesListContainer) {
 			</div>
     `;
 		loading.innerHTML = loadingInner;
-		notesListContainer.append(loading);
+		loadingListContainer.append(loading);
 	});
 }

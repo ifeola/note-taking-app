@@ -1,9 +1,10 @@
 import getData from "./modules/getData.js";
 import appendNoteToDOM from "./modules/appendNoteToDOM.js";
-// import appendIsLoadingState from "./modules/appendIsLoadingState.js";
+import appendIsLoadingState from "./modules/appendIsLoadingState.js";
 
 const noteTabs = document.querySelector(".note-tabs");
 const notesListContainer = document.querySelector(".notes");
+const loader = document.querySelector(".loading");
 const notesTabContainer = document.querySelector(".note-tabs");
 const totalNotes = document.querySelector(".total-notes");
 const subNotes = document.querySelector(".sub-notes");
@@ -14,14 +15,22 @@ let notes = [];
 let isLoading = true;
 
 async function initializeApp() {
-	notes = await getData({ undefined, isLoading }); // Wait for the data here
+	// Show loader and hide content container
+	notesListContainer.style.display = "none";
+	loader.style.display = "grid";
+	appendIsLoadingState(loader);
+
+	// Data fetching logic
+	notes = await getData({
+		undefined,
+	});
+
+	// Hide loader, show content
+	loader.style.display = "none";
+	notesListContainer.style.display = "grid";
+
 	totalNotes.textContent = notes.length;
 	appendNoteToDOM(notes, notesListContainer);
-
-	// isLoading === true
-	// 	? appendIsLoadingState(notesListContainer)
-	// 	: appendNoteToDOM(notes, notesListContainer);
-	// if (isLoading) appendIsLoadingState(notesListContainer);
 	getTags(notes);
 	countNotes(notes);
 }
@@ -67,11 +76,8 @@ notesTabContainer.addEventListener("click", async (e) => {
 		}
 	});
 
-	const filteredNotes = await getData({ query, isLoading });
+	const filteredNotes = await getData({ query });
 	appendNoteToDOM(filteredNotes, notesListContainer);
-	// isLoading === true
-	// 	? appendIsLoadingState(notesListContainer)
-	// 	: appendNoteToDOM(filteredNotes, notesListContainer);
 	countNotes(filteredNotes);
 });
 
