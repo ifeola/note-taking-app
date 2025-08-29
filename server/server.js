@@ -26,7 +26,28 @@ app.get("/api/v1/notes", async (request, response) => {
 	}
 });
 
-app.get("/api/v1/notes/");
+app.get("/api/v1/notes/:tag", async (request, response) => {
+	try {
+		const { tag } = request.params;
+		const notes = await Note.find({});
+		if (tag === "all") {
+			return response.json(notes);
+		} else {
+			const filteredNotes = await Note.find({ tag });
+			if (filteredNotes.length === 0 || !filteredNotes)
+				return response
+					.status(204)
+					.json({ message: "No Notes found for this tag" });
+			return response.status(200).json(filteredNotes);
+		}
+	} catch (error) {
+		console.error("Error fetching notes:", error.message);
+		// Handle potential database errors or other server-side issues
+		return response.status(500).json({ message: "Internal server error" });
+	}
+});
+
+app.delete("/api/v1/notes/:id", (request, response) => {});
 
 app.listen(PORT, () => {
 	connectDb();

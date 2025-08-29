@@ -63,6 +63,7 @@ initializeApp();
 notesTabContainer.addEventListener("click", async (e) => {
 	const button = e.target;
 	if (!button.classList.contains("note-tab")) return;
+
 	const query = button.dataset.target;
 	const noteTabs = Array.from(notesTabContainer.querySelectorAll(".note-tab"));
 
@@ -74,6 +75,8 @@ notesTabContainer.addEventListener("click", async (e) => {
 	});
 
 	const filteredNotes = await getData(`/api/v1/notes/${query}`);
+	console.log(query);
+
 	appendNoteToDOM(filteredNotes, notesListContainer);
 	countNotes(filteredNotes);
 });

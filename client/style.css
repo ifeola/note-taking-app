@@ -384,6 +384,7 @@ main {
 	width: 100%;
 	padding-block-end: 2rem;
 	padding-block-start: 14rem;
+	padding-inline: min(4%, 1rem);
 
 	@media (width > 765px) {
 		padding-block-start: 11rem;
