@@ -6,6 +6,7 @@ export default function appendNoteToDOM(notes, notesListContainer) {
 	notes.forEach((note) => {
 		const noteItem = document.createElement("li");
 		noteItem.setAttribute("id", note._id);
+		noteItem.setAttribute("data-tag", note.tag);
 		noteItem.classList.add("note");
 		const noteInner = `
       <div class="note-top flex">

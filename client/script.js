@@ -13,6 +13,7 @@ const createNoteBtn = document.querySelector(".create-new-note-btn");
 const formContainer = document.querySelector(".form-container");
 const closeModalBtn = document.querySelector("#close-modal-btn");
 const confirmDeleteEl = document.querySelector(".confirm");
+const notifications = document.querySelector(".notifications");
 
 let notes = [];
 
@@ -27,11 +28,25 @@ async function initializeApp() {
 
 	// Hide loader, show content
 	loader.style.display = "none";
-	notesListContainer.style.display = "grid";
+	if (notes.length === 0) {
+		const noNotes = document.createElement("div");
+		const header = document.createElement("h4");
+		const image = document.createElement("img");
 
-	totalNotes.textContent = notes.length;
-	appendNoteToDOM(notes, notesListContainer);
+		header.textContent = `No notes found for ${query}`;
+		image.src = "./images/empty-notes.png";
+
+		noNotes.append(header);
+		noNotes.append(image);
+
+		notesListContainer.append(noNotes);
+	} else {
+		appendNoteToDOM(notes, notesListContainer);
+	}
+
 	getTags(notes);
+	notesListContainer.style.display = "grid";
+	totalNotes.textContent = notes.length;
 	countNotes(notes);
 }
 
@@ -98,6 +113,7 @@ notesListContainer.addEventListener("click", (e) => {
 	if (!e.target.classList.contains("delete-btn")) return;
 	const deleteBtn = e.target;
 	const parentElement = deleteBtn.closest(".note");
+	const tag = parentElement.getAttribute("data-tag");
 
 	// Ensure a parent note element was found
 	if (!parentElement) {
@@ -115,7 +131,12 @@ notesListContainer.addEventListener("click", (e) => {
 			if (e.target.classList.contains("delete-cinfirm-btn")) {
 				await deleteData(`/api/v1/notes/${id}`);
 				parentElement.remove();
+				getNotified("Note deleted successfully.");
 				confirmDeleteEl.style.display = "none";
+				const filteredNotes = await getData(`/api/v1/notes/${tag}`);
+				const notes = await getData(`/api/v1/notes`);
+				countNotes(filteredNotes);
+				totalNotes.textContent = notes.length;
 			} else {
 				confirmDeleteEl.style.display = "none";
 			}
@@ -123,3 +144,14 @@ notesListContainer.addEventListener("click", (e) => {
 		{ once: true }
 	);
 });
+
+function getNotified(content) {
+	const notification = document.createElement("div");
+	notification.classList.add("notification");
+	notification.textContent = content;
+	notifications.append(notification);
+
+	setTimeout(() => {
+		notification.remove();
+	}, 3000);
+}

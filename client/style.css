@@ -404,9 +404,9 @@ main {
 	display: flex;
 	flex-direction: column;
 	padding: 1rem;
-	border: 1px solid var(--border-color);
-	border-radius: var(--border-radius);
 	background-color: var(--bg-color);
+	border-radius: var(--border-radius);
+	border: 1px solid var(--border-color);
 	box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
 	-webkit-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
 	-moz-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.1);
@@ -805,5 +805,26 @@ main {
 
 	.close-confirm-btn:hover {
 		background-color: var(--border-color);
+	}
+}
+
+/* notification */
+.notifications {
+	position: fixed;
+	bottom: 1rem;
+	right: 1rem;
+
+	display: grid;
+	gap: 0.5rem;
+
+	.notification {
+		padding: 1rem;
+		font-size: 0.875rem;
+		background-color: var(--bg-color);
+		border-radius: var(--border-radius);
+		border-top: 3px solid var(--delete-color);
+		box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
+		-webkit-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
+		-moz-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.1);
 	}
 }
