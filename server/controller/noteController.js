@@ -66,4 +66,9 @@ async function deleteNoteById(request, response) {
 	}
 }
 
-module.exports = { getNotes, getTagNotes, deleteNoteById };
+async function postNote(request, response) {
+	// const { note } = await request.body;
+	console.log(request.body);
+}
+
+module.exports = { getNotes, getTagNotes, deleteNoteById, postNote };

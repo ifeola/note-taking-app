@@ -11,6 +11,7 @@ const totalNotes = document.querySelector(".total-notes");
 const subNotes = document.querySelector(".sub-notes");
 const createNoteBtn = document.querySelector(".create-new-note-btn");
 const formContainer = document.querySelector(".form-container");
+const form = document.querySelector("#add-note-form");
 const closeModalBtn = document.querySelector("#close-modal-btn");
 const confirmDeleteEl = document.querySelector(".confirm");
 const notifications = document.querySelector(".notifications");
@@ -151,6 +152,42 @@ notesListContainer.addEventListener("click", (e) => {
 		},
 		{ once: true }
 	);
+});
+
+async function sendNoteObject() {
+	const title = document.querySelector("#input-title");
+	const content = document.querySelector("#input-content");
+	const tag = document.querySelector("#form-tags");
+
+	const titleValue = title.value;
+	const contentValue = content.value;
+	const tagValue = tag.value;
+
+	const note = {
+		title: titleValue,
+		content: contentValue,
+		tag: tagValue,
+		is_archived: false,
+	};
+
+	const response = await fetch("/api/v1/notes", {
+		method: "POST",
+		headers: {
+			"Content-Type": "application/json",
+		},
+		body: JSON.stringify(note),
+	});
+
+	if (!response.ok) {
+		// Handle HTTP errors (e.g., 404, 500)
+		throw new Error(`HTTP error! status`);
+	}
+	const data = await response.json(); // Parse the JSON response body
+}
+
+form.addEventListener("submit", async (e) => {
+	e.preventDefault();
+	await sendNoteObject();
 });
 
 function getNotified(content) {
