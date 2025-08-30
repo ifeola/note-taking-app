@@ -1,6 +1,7 @@
 import getData from "./modules/getData.js";
 import appendNoteToDOM from "./modules/appendNoteToDOM.js";
 import appendIsLoadingState from "./modules/appendIsLoadingState.js";
+import deleteData from "./modules/deleteData.js";
 
 const noteTabs = document.querySelector(".note-tabs");
 const notesListContainer = document.querySelector(".notes");
@@ -11,6 +12,8 @@ const subNotes = document.querySelector(".sub-notes");
 const createNoteBtn = document.querySelector(".create-new-note-btn");
 const formContainer = document.querySelector(".form-container");
 const closeModalBtn = document.querySelector("#close-modal-btn");
+const confirmDeleteEl = document.querySelector(".confirm");
+
 let notes = [];
 
 async function initializeApp() {
@@ -60,6 +63,7 @@ function getTags(notes) {
 
 initializeApp();
 
+// Notes tab logic start
 notesTabContainer.addEventListener("click", async (e) => {
 	const button = e.target;
 	if (!button.classList.contains("note-tab")) return;
@@ -75,8 +79,6 @@ notesTabContainer.addEventListener("click", async (e) => {
 	});
 
 	const filteredNotes = await getData(`/api/v1/notes/${query}`);
-	console.log(query);
-
 	appendNoteToDOM(filteredNotes, notesListContainer);
 	countNotes(filteredNotes);
 });
@@ -87,4 +89,37 @@ createNoteBtn.addEventListener("click", () => {
 
 closeModalBtn.addEventListener("click", () => {
 	formContainer.classList.remove("active-modal");
+});
+
+// Notes tab logic end
+
+// Delete a Note from Notes
+notesListContainer.addEventListener("click", (e) => {
+	if (!e.target.classList.contains("delete-btn")) return;
+	const deleteBtn = e.target;
+	const parentElement = deleteBtn.closest(".note");
+
+	// Ensure a parent note element was found
+	if (!parentElement) {
+		console.error(
+			"Could not find parent '.note' element for the delete button."
+		);
+		return;
+	}
+	const id = parentElement.id;
+
+	confirmDeleteEl.style.display = "grid";
+	confirmDeleteEl.addEventListener(
+		"click",
+		async (e) => {
+			if (e.target.classList.contains("delete-cinfirm-btn")) {
+				await deleteData(`/api/v1/notes/${id}`);
+				parentElement.remove();
+				confirmDeleteEl.style.display = "none";
+			} else {
+				confirmDeleteEl.style.display = "none";
+			}
+		},
+		{ once: true }
+	);
 });
