@@ -113,7 +113,6 @@ notesListContainer.addEventListener("click", (e) => {
 	if (!e.target.classList.contains("delete-btn")) return;
 	const deleteBtn = e.target;
 	const parentElement = deleteBtn.closest(".note");
-	const tag = parentElement.getAttribute("data-tag");
 
 	// Ensure a parent note element was found
 	if (!parentElement) {
@@ -133,6 +132,15 @@ notesListContainer.addEventListener("click", (e) => {
 				parentElement.remove();
 				getNotified("Note deleted successfully.");
 				confirmDeleteEl.style.display = "none";
+
+				const noteTabsList = Array.from(document.querySelectorAll(".note-tab"));
+				let tag = "";
+				noteTabsList.forEach((tab) => {
+					if (tab.classList.contains("active")) {
+						tag = tab.dataset.target;
+					}
+				});
+
 				const filteredNotes = await getData(`/api/v1/notes/${tag}`);
 				const notes = await getData(`/api/v1/notes`);
 				countNotes(filteredNotes);

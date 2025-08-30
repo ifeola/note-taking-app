@@ -760,12 +760,8 @@ main {
 	-webkit-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.12);
 	-moz-box-shadow: 4px 4px 8px -1px rgba(0, 0, 0, 0.1);
 
-	@media (width > 765px) {
-		padding: 2rem;
-	}
-
 	p {
-		font-size: 1.625rem;
+		font-size: 1.125rem;
 		font-weight: 600;
 		color: #333333;
 		margin-block-end: 1rem;
@@ -808,17 +804,29 @@ main {
 	}
 }
 
+@media (width > 765px) {
+	.confirm-bg {
+		padding: 2rem;
+
+		p {
+			font-size: 1.625rem;
+		}
+	}
+}
+
 /* notification */
 .notifications {
 	position: fixed;
-	bottom: 1rem;
-	right: 1rem;
+	top: 1rem;
+	left: 50%;
+	transform: translate(-50%, 0);
 
 	display: grid;
 	gap: 0.5rem;
+	z-index: 30;
 
 	.notification {
-		padding: 1rem;
+		padding: 0.5rem 1rem;
 		font-size: 0.875rem;
 		background-color: var(--bg-color);
 		border-radius: var(--border-radius);
