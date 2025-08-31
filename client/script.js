@@ -250,9 +250,8 @@ async function sendNoteObject() {
 	noteItem.innerHTML = noteInner;
 	notesListContainer.append(noteItem);
 
-	titleValue = "";
-	contentValue = "";
-	tagValue = "";
+	title.value = "";
+	content.value = "";
 	confirmDeleteEl.style.display = "none";
 }
 
