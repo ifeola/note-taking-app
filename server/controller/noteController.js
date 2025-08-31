@@ -67,8 +67,13 @@ async function deleteNoteById(request, response) {
 }
 
 async function postNote(request, response) {
-	// const { note } = await request.body;
-	console.log(request.body);
+	const { title, content, tag, is_archived } = await request.body;
+	if (!title && !content && !tag)
+		return response.json({ message: "Some inputs are missing" });
+	const data = { title, content, tag, is_archived };
+	const note = await Note.insertOne(data);
+	console.log(note);
+	return response.json(note);
 }
 
 module.exports = { getNotes, getTagNotes, deleteNoteById, postNote };
