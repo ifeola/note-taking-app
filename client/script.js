@@ -2,7 +2,6 @@ import getData from "./modules/getData.js";
 import appendNoteToDOM from "./modules/appendNoteToDOM.js";
 import appendIsLoadingState from "./modules/appendIsLoadingState.js";
 import deleteData from "./modules/deleteData.js";
-import formatSmartDate from "./modules/formatSmartDate.js";
 
 const noteTabs = document.querySelector(".note-tabs");
 const notesListContainer = document.querySelector(".notes");
@@ -44,9 +43,9 @@ async function initializeApp() {
 		notesListContainer.innerHTML = "";
 		notesListContainer.append(noNotes);
 	} else {
+		notesListContainer.innerHTML = "";
 		notes.forEach((note) => {
-			notesListContainer.innerHTML = "";
-			appendNoteToDOM(notes, notesListContainer);
+			appendNoteToDOM(note, notesListContainer);
 		});
 	}
 
@@ -55,6 +54,8 @@ async function initializeApp() {
 	totalNotes.textContent = notes.length;
 	countNotes(notes);
 }
+
+initializeApp();
 
 function countNotes(notes) {
 	const notesCount = notes.length;
@@ -82,8 +83,6 @@ function getTags(notes) {
 	});
 }
 
-initializeApp();
-
 // Notes tab logic start
 notesTabContainer.addEventListener("click", async (e) => {
 	const button = e.target;
@@ -100,9 +99,9 @@ notesTabContainer.addEventListener("click", async (e) => {
 	});
 
 	const filteredNotes = await getData(`/api/v1/notes/${query}`);
-	notes.forEach((note) => {
-		notesListContainer.innerHTML = "";
-		appendNoteToDOM(filteredNotes, notesListContainer);
+	notesListContainer.innerHTML = "";
+	filteredNotes.forEach((note) => {
+		appendNoteToDOM(note, notesListContainer);
 	});
 	countNotes(filteredNotes);
 });
@@ -193,14 +192,15 @@ async function sendNoteObject() {
 	const note = await response.json(); // Parse the JSON response body
 	// appendNoteToDOM(note, notesListContainer);
 	initializeApp();
-
-	form.reset();
-	confirmDeleteEl.style.display = "none";
+	title.value = "";
+	content.value = "";
 }
 
 form.addEventListener("submit", async (e) => {
 	e.preventDefault();
 	await sendNoteObject();
+
+	formContainer.classList.remove("active-modal");
 });
 
 function getNotified(content) {
