@@ -1,14 +1,11 @@
 import formatSmartDate from "./formatSmartDate.js";
 
-export default function appendNoteToDOM(notes, notesListContainer) {
-	notesListContainer.innerHTML = "";
-
-	notes.forEach((note) => {
-		const noteItem = document.createElement("li");
-		noteItem.setAttribute("id", note._id);
-		noteItem.setAttribute("data-tag", note.tag);
-		noteItem.classList.add("note");
-		const noteInner = `
+export default function appendNoteToDOM(note, notesListContainer) {
+	const noteItem = document.createElement("li");
+	noteItem.setAttribute("id", note._id);
+	noteItem.setAttribute("data-tag", note.tag);
+	noteItem.classList.add("note");
+	const noteInner = `
       <div class="note-top flex">
 				<span class="note-tag ${note.tag}-tag">${note.tag}</span>
 				<div class="note-title flex justify-between">
@@ -66,7 +63,6 @@ export default function appendNoteToDOM(notes, notesListContainer) {
 				</div>
 			</div>
     `;
-		noteItem.innerHTML = noteInner;
-		notesListContainer.append(noteItem);
-	});
+	noteItem.innerHTML = noteInner;
+	notesListContainer.append(noteItem);
 }
