@@ -451,6 +451,10 @@ main {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+
+		& > * {
+			pointer-events: none;
+		}
 	}
 
 	.note-bottom {
@@ -826,6 +830,7 @@ main {
 	z-index: 30;
 
 	.notification {
+		white-space: nowrap;
 		padding: 0.5rem 1rem;
 		font-size: 0.875rem;
 		background-color: var(--bg-color);

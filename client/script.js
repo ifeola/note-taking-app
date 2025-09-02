@@ -5,6 +5,7 @@ import deleteData from "./modules/deleteData.js";
 
 const noteTabs = document.querySelector(".note-tabs");
 const notesListContainer = document.querySelector(".notes");
+const notesLists = Array.from(notesListContainer.querySelectorAll(".note"));
 const loader = document.querySelector(".loading");
 const notesTabContainer = document.querySelector(".note-tabs");
 const totalNotes = document.querySelector(".total-notes");
@@ -15,6 +16,11 @@ const form = document.querySelector("#add-note-form");
 const closeModalBtn = document.querySelector("#close-modal-btn");
 const confirmDeleteEl = document.querySelector(".confirm");
 const notifications = document.querySelector(".notifications");
+
+// Form Elements
+const title = document.querySelector("#input-title");
+const content = document.querySelector("#input-content");
+const tag = document.querySelector("#form-tags");
 
 let notes = [];
 
@@ -106,15 +112,111 @@ notesTabContainer.addEventListener("click", async (e) => {
 	countNotes(filteredNotes);
 });
 
+let currentNoteId = null;
+
+// Open create modal
 createNoteBtn.addEventListener("click", () => {
+	currentNoteId = null; // reset to create mode
+
+	// Clear form fields
+	title.value = "";
+	content.value = "";
+
 	formContainer.classList.add("active-modal");
 });
+
+// Open edit modal
+notesListContainer.addEventListener("click", (e) => {
+	if (!e.target.classList.contains("edit-btn")) return;
+
+	const parentEl = e.target.closest(".note");
+	currentNoteId = parentEl.id; // now we’re in edit mode
+
+	// Populate form
+	title.value = parentEl.querySelector(".note-title h2").textContent.trim();
+	content.value = parentEl.querySelector(".note-content").textContent.trim();
+	tag.value = parentEl.querySelector(".note-tag").textContent.trim();
+
+	formContainer.classList.add("active-modal");
+});
+
+// Create or edit note
+form.addEventListener("submit", async (e) => {
+	e.preventDefault();
+
+	const inputTitle = form.querySelector("#input-title");
+	const inputContent = form.querySelector("#input-content");
+	const inputTag = form.querySelector("#form-tags");
+
+	if (
+		!inputTitle.value.trim() &&
+		!inputContent.value.trim() &&
+		!inputTag.value.trim()
+	)
+		return;
+
+	let noteData = {
+		title: inputTitle.value.trim(),
+		content: inputContent.value.trim(),
+		tag: inputTag.value.trim(),
+	};
+
+	if (currentNoteId) {
+		// EDIT mode
+		await sendPatchRequest(currentNoteId, noteData);
+
+		// Update UI
+		const parentEl = document.getElementById(currentNoteId);
+		parentEl.querySelector(".note-title h2").textContent = noteData.title;
+		parentEl.querySelector(".note-content").textContent = noteData.content;
+		parentEl.querySelector(".note-tag").textContent = noteData.tag;
+	} else {
+		noteData = { ...noteData, is_archived: false };
+		const newNote = await sendPostRequest(noteData); // you’ll need a POST helper
+
+		// Add to UI
+		appendNoteToDOM(newNote, notesListContainer);
+		subNotes.textContent = Array.from(
+			notesListContainer.querySelectorAll(".note")
+		).length;
+		totalNotes.textContent = Array.from(
+			notesListContainer.querySelectorAll(".note")
+		).length;
+		console.log(notesLists.length);
+
+		getNotified("Note added successfully");
+	}
+
+	formContainer.classList.remove("active-modal");
+	currentNoteId = null;
+});
+
+// Send patch request to server
+async function sendPatchRequest(id, note) {
+	try {
+		const response = await fetch(`/api/v1/notes/${id}`, {
+			method: "PATCH",
+			headers: { "Content-Type": "application/json" },
+			body: JSON.stringify(note),
+		});
+
+		if (!response.ok) {
+			throw new Error(
+				`An error occurred: ${response.status} ${response.statusText}`
+			);
+		}
+
+		const editedNote = await response.json();
+		console.log("Updated note:", editedNote);
+		return editedNote;
+	} catch (error) {
+		console.error(error.message);
+	}
+}
 
 closeModalBtn.addEventListener("click", () => {
 	formContainer.classList.remove("active-modal");
 });
-
-// Notes tab logic end
 
 // Delete a Note from Notes
 notesListContainer.addEventListener("click", (e) => {
@@ -161,28 +263,13 @@ notesListContainer.addEventListener("click", (e) => {
 	);
 });
 
-async function sendNoteObject() {
-	const title = document.querySelector("#input-title");
-	const content = document.querySelector("#input-content");
-	const tag = document.querySelector("#form-tags");
-
-	let titleValue = title.value.trim();
-	let contentValue = content.value.trim();
-	let tagValue = tag.value;
-
-	const data = {
-		title: titleValue,
-		content: contentValue,
-		tag: tagValue,
-		is_archived: false,
-	};
-
+async function sendPostRequest(noteData) {
 	const response = await fetch("/api/v1/notes", {
 		method: "POST",
 		headers: {
 			"Content-Type": "application/json",
 		},
-		body: JSON.stringify(data),
+		body: JSON.stringify(noteData),
 	});
 
 	if (!response.ok) {
@@ -190,19 +277,10 @@ async function sendNoteObject() {
 		throw new Error(`HTTP error! status`);
 	}
 	const note = await response.json(); // Parse the JSON response body
-	// appendNoteToDOM(note, notesListContainer);
-	initializeApp();
-	title.value = "";
-	content.value = "";
+	return note;
 }
 
-form.addEventListener("submit", async (e) => {
-	e.preventDefault();
-	await sendNoteObject();
-
-	formContainer.classList.remove("active-modal");
-});
-
+// Notifications
 function getNotified(content) {
 	const notification = document.createElement("div");
 	notification.classList.add("notification");
@@ -213,3 +291,72 @@ function getNotified(content) {
 		notification.remove();
 	}, 3000);
 }
+
+// Edit note functionality
+// notesListContainer.addEventListener("click", (e) => {
+// 	if (!e.target.classList.contains("edit-btn")) return;
+// 	const editBtn = e.target;
+
+// 	if (!editBtn) return "There is no such button";
+// 	const parentEl = editBtn.closest(".note");
+// 	const parentElId = parentEl.id;
+
+// 	let elTitle = parentEl.querySelector(".note-title h2");
+// 	let elContent = parentEl.querySelector(".note-content");
+// 	let elTag = parentEl.querySelector(".note-tag");
+
+// 	// Clear form
+// 	title.value = "";
+// 	content.value = "";
+
+// 	/* Form Input */
+// 	title.value = elTitle.textContent.trim();
+// 	content.value = elContent.textContent.trim();
+// 	tag.value = elTag.textContent.trim();
+// 	formContainer.classList.add("active-modal");
+
+// 	formContainer.addEventListener("submit", (e) => {
+// 		e.preventDefault();
+// 		const title = formContainer.querySelector("#input-title");
+// 		const content = formContainer.querySelector("#input-content");
+// 		const tag = formContainer.querySelector("#form-tags");
+
+// 		if (!title && !content && !tag) return;
+
+// 		const editedNote = {
+// 			title: title.value,
+// 			content: content.value,
+// 			tag: tag.value,
+// 		};
+
+// 		sendPatchRequest(parentElId, editedNote);
+
+// 		elTitle.textContent = title.value;
+// 		elContent.textContent = content.value;
+// 		elTag.textContent = tag.value;
+
+// 		formContainer.classList.remove("active-modal");
+// 	});
+// });
+
+// async function sendPatchRequest(id, note) {
+// 	const response = await fetch(`/api/v1/notes/${id}`, {
+// 		method: "PATCH",
+// 		headers: {
+// 			"Content-Type": "application/json",
+// 		},
+// 		body: JSON.stringify(note),
+// 	});
+
+// 	if (!response.ok)
+// 		return new Error("An error occured while fetching: ", response.message);
+
+// 	const editedNote = await response.json();
+// 	console.log(editedNote);
+// }
+
+// Open edit modal when clicking edit button
+
+// Handle form submission (only one listener)
+
+// PATCH request helper

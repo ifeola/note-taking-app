@@ -76,4 +76,19 @@ async function postNote(request, response) {
 	return response.json(note);
 }
 
-module.exports = { getNotes, getTagNotes, deleteNoteById, postNote };
+async function editNote(request, response) {
+	const { title, content, tag } = await request.body;
+	const { id } = request.params;
+	if (!mongoose.Types.ObjectId.isValid(id))
+		return response.status(400).json({ message: "Invalid note ID format" });
+	const note = Note.findByIdAndUpdate(id);
+	note.title = title;
+	note.content = content;
+	note.tag = tag;
+
+	return response
+		.state(201)
+		.json({ message: "Note successfully edited", note });
+}
+
+module.exports = { getNotes, getTagNotes, deleteNoteById, postNote, editNote };
