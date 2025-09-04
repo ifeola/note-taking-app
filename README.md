@@ -50,11 +50,11 @@ Built with **Node.js, Express.js, and MongoDB** — this project marks my first 
 
 - #### Desktop View
 
-![Inscribe Screenshot Desktop](/client/images/Screenshot_20250904_115837.png)
+![Inscribe Screenshot Desktop](./client/images/Screenshot_20250904_115837.png)
 
 - #### Mobile View
 
-![Inscribe Screenshot Mobile](/client/images/Screenshot_20250904_122316.png)
+![Inscribw Screenshot Mobile](/client/images/Screenshot_20250904_122316.png)
 
 ### 🚀 Future Improvements
 
