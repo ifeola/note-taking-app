@@ -77,14 +77,16 @@ async function postNote(request, response) {
 }
 
 async function editNote(request, response) {
-	const { title, content, tag } = await request.body;
+	const editedNote = await request.body.note;
+	console.log(editedNote);
+
 	const { id } = request.params;
 	if (!mongoose.Types.ObjectId.isValid(id))
 		return response.status(400).json({ message: "Invalid note ID format" });
 	const note = Note.findByIdAndUpdate(id);
-	note.title = title;
-	note.content = content;
-	note.tag = tag;
+	note.title = editedNote.title;
+	note.content = editedNote.content;
+	note.tag = editedNote.tag;
 
 	return response
 		.state(201)

@@ -192,7 +192,7 @@ form.addEventListener("submit", async (e) => {
 });
 
 // Send patch request to server
-async function sendPatchRequest(id, note) {
+async function sendPatchRequest(note, id) {
 	try {
 		const response = await fetch(`/api/v1/notes/${id}`, {
 			method: "PATCH",
