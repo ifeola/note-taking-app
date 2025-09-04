@@ -54,7 +54,7 @@ Built with **Node.js, Express.js, and MongoDB** — this project marks my first 
 
 - #### Mobile View
 
-![Inscribw Screenshot Mobile](./assets/images/Screenshot_20250904_122316.png)
+![Inscribw Screenshot Mobile](./assets/Screenshot_20250904_122316.png)
 
 ### 🚀 Future Improvements
 
