@@ -77,19 +77,21 @@ async function postNote(request, response) {
 }
 
 async function editNote(request, response) {
-	const editedNote = await request.body.note;
-	console.log(editedNote);
-
 	const { id } = request.params;
 	if (!mongoose.Types.ObjectId.isValid(id))
 		return response.status(400).json({ message: "Invalid note ID format" });
-	const note = Note.findByIdAndUpdate(id);
-	note.title = editedNote.title;
-	note.content = editedNote.content;
-	note.tag = editedNote.tag;
+	const note = await Note.findByIdAndUpdate(
+		id,
+		{ $set: request.body }, // only update fields in body
+		{ new: true, runValidators: true } // return updated doc, run schema validators)
+	);
+
+	if (!note) {
+		return res.status(404).json({ message: "User not found" });
+	}
 
 	return response
-		.state(201)
+		.status(201)
 		.json({ message: "Note successfully edited", note });
 }
 

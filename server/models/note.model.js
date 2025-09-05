@@ -23,7 +23,6 @@ const NoteSchema = new mongoose.Schema(
 		},
 		is_archived: {
 			type: Boolean,
-			required: true,
 		},
 	},
 	{

@@ -791,21 +791,6 @@ main {
 		background-color: var(--border-color);
 		color: var(--text-color);
 	}
-
-	.close-confirm-btn {
-		position: absolute;
-		top: 1rem;
-		right: 1rem;
-		width: 2rem;
-		height: 2rem;
-		padding: 0.5rem;
-		transition: 250ms ease-in-out;
-		border-radius: 50%;
-	}
-
-	.close-confirm-btn:hover {
-		background-color: var(--border-color);
-	}
 }
 
 @media (width > 765px) {

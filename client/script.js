@@ -163,7 +163,9 @@ form.addEventListener("submit", async (e) => {
 
 	if (currentNoteId) {
 		// EDIT mode
-		await sendPatchRequest(currentNoteId, noteData);
+		noteData = { ...noteData };
+		const result = await sendPatchRequest(noteData, currentNoteId);
+		console.log(result);
 
 		// Update UI
 		const parentEl = document.getElementById(currentNoteId);
@@ -207,7 +209,6 @@ async function sendPatchRequest(note, id) {
 		}
 
 		const editedNote = await response.json();
-		console.log("Updated note:", editedNote);
 		return editedNote;
 	} catch (error) {
 		console.error(error.message);
@@ -237,7 +238,7 @@ notesListContainer.addEventListener("click", (e) => {
 	confirmDeleteEl.addEventListener(
 		"click",
 		async (e) => {
-			if (e.target.classList.contains("delete-cinfirm-btn")) {
+			if (e.target.classList.contains("delete-confirm-btn")) {
 				await deleteData(`/api/v1/notes/${id}`);
 				parentElement.remove();
 				getNotified("Note deleted successfully.");
